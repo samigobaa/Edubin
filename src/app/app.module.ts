@@ -34,6 +34,8 @@ import { CoursesTableComponent } from './componants/courses-table/courses-table.
 import { SignupStudentComponent } from './componants/signup-student/signup-student.component';
 import { SignupParentComponent } from './componants/signup-parent/signup-parent.component';
 import { TeachersPanelComponent } from './componants/teachers-panel/teachers-panel.component';
+import { FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,10 @@ import { TeachersPanelComponent } from './componants/teachers-panel/teachers-pan
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

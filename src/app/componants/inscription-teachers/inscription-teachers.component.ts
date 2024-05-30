@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-inscription-teachers',
@@ -8,8 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class InscriptionTeachersComponent implements OnInit {
   teacherForm!:FormGroup
+  teacher :any
   pdfPreview:any
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:FormBuilder, private techaerService:UsersService) { }
 
   ngOnInit(): void {
     this.teacherForm = this.formBuilder.group({
@@ -38,4 +40,7 @@ export class InscriptionTeachersComponent implements OnInit {
     reader.readAsDataURL(file);
     }
     } 
+    addTeachers(){
+this.techaerService.addUsers(this.teacher).subscribe();
+    }
 }

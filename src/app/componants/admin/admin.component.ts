@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,7 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AdminComponent implements OnInit {
   adminForm!:FormGroup
-  constructor(private formBuilder:FormBuilder) { }
+  admin:any
+  constructor(private formBuilder:FormBuilder,private adminService:UsersService) { }
 
   ngOnInit(): void {
     this.adminForm = this.formBuilder.group({
@@ -20,6 +22,9 @@ export class AdminComponent implements OnInit {
       adminPhone : ['',[Validators.required,Validators.pattern('[0-9]{8}')]],
       
     })
+  }
+  addAdmin(){
+    this.adminService.addUsers(this.admin).subscribe();
   }
 
 }

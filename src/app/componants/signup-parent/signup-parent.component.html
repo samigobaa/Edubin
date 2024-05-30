@@ -1,16 +1,17 @@
-<section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8" style="background-image: url(assets/images/page-banner-1.jpg)">
+<section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8"
+    style="background-image: url(assets/images/page-banner-1.jpg)">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="page-banner-cont">
-                    <h2>Parent</h2>
+                    <h2>Admin</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Parent</li>
+                            <li class="breadcrumb-item active" aria-current="page">parent</li>
                         </ol>
                     </nav>
-                </div>  <!-- page banner cont -->
+                </div> <!-- page banner cont -->
             </div>
         </div> <!-- row -->
     </div> <!-- container -->
@@ -25,49 +26,123 @@
                         <h2>Welcom Family</h2>
                     </div> <!-- section title -->
                     <div class="main-form pt-45">
-                        <form id="contact-form" action="#" method="post" data-toggle="validator">
+                        <form id="contact-form" action="#" method="post" data-toggle="validator"
+                            [formGroup]="parentForm">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="name" type="text" placeholder="First Name" data-error="Name is required." required="required">
-                                        <div class="help-block with-errors"></div>
+                                        <input formControlName="parentFirstName" type="text" placeholder="First Name*">
+                                        <div
+                                            *ngIf=" ((parentForm.controls['parentFirstName'].invalid) && (parentForm.controls['parentFirstName'].touched || parentForm.controls['parentFirstName'].dirty))">
+                                            <div *ngIf="parentForm.controls['parentFirstName'].errors?.['required']"
+                                                class="red">
+                                                Name required *
+                                            </div>
+                                            <div *ngIf="parentForm.controls['parentFirstName'].errors?.['minlength']"
+                                                class="red">
+                                                Your name must have 3 chars *
+                                            </div>
+                                        </div>
                                     </div> <!-- singel form -->
                                 </div>
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="text" type="text" placeholder="Last Name" data-error=" Last Name is required." required="required">
-                                        <div class="help-block with-errors"></div>
+                                        <input formControlName="parentLastName" type="text" placeholder="Last Name*">
+                                        <div
+                                            *ngIf=" ((parentForm.controls['parentLastName'].invalid) && (parentForm.controls['parentLastName'].touched || parentForm.controls['parentLastName'].dirty))">
+                                            <div *ngIf="parentForm.controls['parentLastName'].errors?.['required']"
+                                                class="red">
+                                                Last name required *
+                                            </div>
+                                            <div *ngIf="parentForm.controls['parentLastName'].errors?.['minlength']"
+                                                class="red">
+                                                Your name must have 3 chars *
+                                            </div>
+                                        </div>
                                     </div> <!-- singel form -->
                                 </div>
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="email" type="email" placeholder="Email" data-error="Email is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- singel form --> 
+                                        <input formControlName="parentEmail" type="text" placeholder="Email*">
+                                    </div>
+                                    <div
+                                        *ngIf=" ((parentForm.controls['parentEmail'].invalid) && (parentForm.controls['parentEmail'].touched || parentForm.controls['parentEmail'].dirty))">
+                                        <div *ngIf="parentForm.controls['parentEmail'].errors?.['required']" class="red">
+                                            Email required
+                                        </div>
+                                        <div *ngIf="parentForm.controls['parentEmail'].errors?.['email']" class="red">
+                                            Email error
+                                        </div>
+                                    </div>
+                                    <!-- singel form -->
                                 </div>
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="password" type="password" placeholder="password" data-error="Password  is required." required="required">
-                                        <div class="help-block with-errors"></div>
+                                        <input formControlName="parentPassword" type="password" placeholder="password*">
+
+                                    </div>
+                                    <div
+                                        *ngIf=" ((parentForm.controls['parentPassword'].invalid) && (parentForm.controls['parentPassword'].touched || parentForm.controls['parentPassword'].dirty))">
+                                        <div *ngIf="parentForm.controls['parentPassword'].errors?.['required']"
+                                            class="red">
+                                            password required
+                                        </div>
+                                        <div *ngIf="parentForm.controls['parentPassword'].errors?.['minlength'] || parentForm.controls['parentPassword'].errors?.['maxlength']"
+                                            class="red">
+                                            <ul>
+                                                <li >At least 8 characters in length</li>
+                                            </ul>
+                                        </div>
+                                        <div *ngIf="parentForm.controls['parentPassword'].errors?.['pattern']"
+                                            class="red">
+                                            <ul>
+                                                <li>Lowercase letters,Uppercase letters,Numbers,Special characters</li>
+                                                
+                                            </ul>
+                                        </div>
+
                                     </div> <!-- singel form -->
                                 </div>
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="adress" type="text" placeholder="Adress" data-error="Adress is required." required="required">
-                                        <div class="help-block with-errors"></div>
+                                        <input formControlName="parentAdresse" type="text" placeholder="Adresse*">
+                                        <div
+                                            *ngIf=" ((parentForm.controls['parentAdresse'].invalid) && (parentForm.controls['parentAdresse'].touched || parentForm.controls['parentAdresse'].dirty))">
+                                            <div *ngIf="parentForm.controls['parentAdresse'].errors?.['required']"
+                                                class="red">
+                                                Adress required *
+                                            </div>
+                                            
+                                        </div>
                                     </div> <!-- singel form -->
                                 </div>
-                               
+
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="phone" type="text" placeholder="Phone" data-error="Phone is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- singel form -->
+                                        <input formControlName="parentPhone" type="text" placeholder="Phone*">
+                                    </div>
+                                    <div
+                                        *ngIf=" ((parentForm.controls['parentPhone'].invalid) && (parentForm.controls['parentPhone'].touched || parentForm.controls['parentPhone'].dirty))">
+                                        <div *ngIf="parentForm.controls['parentPhone'].errors?.['required']" class="red">
+                                            Phone required *
+                                        </div>
+                                        <div *ngIf="parentForm.controls['parentPhone'].errors?.['pattern']" class="red">
+                                            Phone error
+                                        </div>
+                                    </div> 
                                 </div>
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="phone" type="text" placeholder="Son's Phone" data-error="Phone is required." required="required">
-                                        <div class="help-block with-errors"></div>
+                                        <input formControlName="ChildPhone" type="text" placeholder="Child's Phone*">
+                                        <div
+                                        *ngIf=" ((parentForm.controls['ChildPhone'].invalid) && (parentForm.controls['ChildPhone'].touched || parentForm.controls['ChildPhone'].dirty))">
+                                        <div *ngIf="parentForm.controls['ChildPhone'].errors?.['required']" class="red">
+                                            Phone required *
+                                        </div>
+                                        <div *ngIf="parentForm.controls['ChildPhone'].errors?.['pattern']" class="red">
+                                            Phone error
+                                        </div>
+                                    </div>
                                     </div> <!-- singel form -->
                                 </div>
                                 
@@ -76,13 +151,13 @@
                                     <div class="singel-form">
                                         <button type="submit" class="main-btn">Sign Up</button>
                                     </div> <!-- singel form -->
-                                </div> 
+                                </div>
                             </div> <!-- row -->
                         </form>
                     </div> <!-- main form -->
                 </div> <!--  contact from -->
             </div>
-          
+
         </div> <!-- row -->
     </div> <!-- container -->
 

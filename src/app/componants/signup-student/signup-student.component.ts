@@ -21,7 +21,8 @@ export class SignupStudentComponent implements OnInit {
       studentAdresse :['',Validators.required],
       studentSpeciality :['',Validators.required],
       studentPassword : ['',[Validators.required,Validators.minLength(6),Validators.maxLength(15),Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
-      studentPhone : ['',[Validators.required,Validators.pattern('[0-9]{8}')]]
+      studentPhone : ['',[Validators.required,Validators.pattern('[0-9]{8}')]],
+      studentPhoto :['']
       
     })
   }
@@ -41,6 +42,6 @@ export class SignupStudentComponent implements OnInit {
     }
     } 
     addStudent(){
-      this.studentService.addUsers(this.student).subscribe();
+      this.studentService.addUsers(this.student,this.studentForm.value.studentPhoto).subscribe();
     }
 }

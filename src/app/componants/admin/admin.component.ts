@@ -24,7 +24,7 @@ export class AdminComponent implements OnInit {
     })
   }
   addAdmin(){
-    this.adminService.addUsers(this.admin).subscribe();
+    this.adminService.addUsers(this.admin,this.adminForm.value.adminPhoto).subscribe();
   }
 
 }

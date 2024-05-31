@@ -41,6 +41,6 @@ parent:any
     }
     } 
     addParent(){
-      this.parentService.addUsers(this.parent).subscribe();
+      this.parentService.addUsers(this.parent,this.parentForm.value.parentPhoto).subscribe();
     }
 }

@@ -8,7 +8,21 @@ export class UsersService {
 
   constructor(private http:HttpClient) { }
   URL ='http://localhost:3000/api/users'
-  addUsers(user :any){
-   return this.http.post(this.URL,user);
+ 
+  addUsers(userObjet: any, userFile:File) {
+    let formData = new FormData();
+    formData.append("firstName", userObjet.userFirstName );
+    formData.append("lastName", userObjet.userLastName );
+    formData.append("email", userObjet.userEmail );
+    formData.append("password", userObjet.userPassword );
+    formData.append("phone", userObjet.userPhone );
+    formData.append("role", userObjet.role );
+    formData.append("speciality", userObjet.userSpeciality );
+    formData.append("teacherCV", userFile);
+    formData.append("studentPhoto", userFile);
+    formData.append("parentPhoto", userFile);
+    formData.append("adminPhoto", userFile);
+    
+    return this.http.post<{ message: string }>(this.URL + '/signup', formData);
   }
 }

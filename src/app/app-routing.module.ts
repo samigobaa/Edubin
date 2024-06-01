@@ -17,6 +17,7 @@ import { TeachersPanelComponent } from './componants/teachers-panel/teachers-pan
 import { AddCoursComponent } from './componants/add-cours/add-cours.component';
 import { AddTeachersComponent } from './componants/add-teachers/add-teachers.component';
 import { AddStudentComponent } from './componants/add-student/add-student.component';
+import { StudentTableComponent } from './componants/student-table/student-table.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -31,6 +32,8 @@ const routes: Routes = [
   {path:'inscriptionTeachers',component:SignupComponent},
   {path:'admin-panel',component:AdminPanelComponent},
   {path:'teachers-panel',component:TeachersPanelComponent},
+  {path:'student-panel',component:StudentTableComponent},
+  {path:'parent-panel',component:ParentComponent},
   {path:'add-courses', component:AddCoursComponent},
   {path:'add-teachers', component:AddTeachersComponent},
   {path:'add-Student', component:AddStudentComponent}

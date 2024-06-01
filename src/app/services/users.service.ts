@@ -18,11 +18,15 @@ export class UsersService {
     formData.append("phone", userObjet.userPhone );
     formData.append("role", userObjet.role );
     formData.append("speciality", userObjet.userSpeciality );
-    formData.append("teacherCV", userFile);
-    formData.append("studentPhoto", userFile);
-    formData.append("parentPhoto", userFile);
-    formData.append("adminPhoto", userFile);
+    formData.append("userFile", userFile);
+    
     
     return this.http.post<{ message: string }>(this.URL + '/signup', formData);
   }
+
+  login(user: any) {
+    return this.http.post<{ message: string, user: any }>(
+      this.URL + '/login',user);
+  }
+
 }

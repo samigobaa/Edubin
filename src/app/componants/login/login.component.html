@@ -25,29 +25,28 @@
                         <h2>Welcom</h2>
                     </div> <!-- section title -->
                     <div class="main-form pt-45">
-                        <form id="contact-form" action="#" method="post" data-toggle="validator">
+                        <form #loginForm="ngForm" (ngSubmit)="login()" >
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="singel-form form-group">
-                                        <input name="email" type="text" placeholder="Your Email" data-error="email is required." required="required">
-                                        <div class="help-block with-errors"></div>
+                                    <div class="form-group">
+                                        <input type="email" [(ngModel)]="user.email" [ngModelOptions]="{ standalone: true }" class="form-control" placeholder="Email" />
                                     </div> <!-- singel form -->
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="singel-form form-group">
-                                        <input name="password" type="text" placeholder="Your Password" data-error=" Password is required." required="required">
-                                        <div class="help-block with-errors"></div>
+                                    <div class="form-group">
+                                        <input type="password" [(ngModel)]="user.password" [ngModelOptions]="{ standalone: true }" class="form-control" placeholder="Password" />
                                     </div> <!-- singel form -->
                                 </div>
                                 
-                                <p class="form-message"></p>
+                               
                                 <div class="col-md-12 text-center">
-                                    <div class="singel-form">
-                                        <button type="submit" class="main-btn">Login</button>
+                                    <div class="singel-form text-center">
+                                        <input type="submit" class="main-btn " value="Login" style="width: 100px; height: 40px;">
                                     </div> <!-- singel form -->
                                 </div> 
                             </div> <!-- row -->
                         </form>
+                        <span style="color: red;">{{errorMessage}}</span>
                     </div> <!-- main form -->
                 </div> <!--  contact from -->
             </div>

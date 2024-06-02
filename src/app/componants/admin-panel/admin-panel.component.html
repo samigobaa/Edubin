@@ -18,26 +18,18 @@
 <section id="teachers-singel" class="pt-70 pb-120 gray-bg">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-8">
-                <div class="teachers-left mt-50">
+            <div class="col-lg-4 col-md-8" *ngFor="let admin of userTable">
+                <div class="teachers-left mt-50" *ngIf="admin.role=='admin'" >
                     <div class="hero">
                         <img src="assets/images/teachers/t-1.jpg" alt="Teachers">
                     </div>
                     <div class="name">
-                        <h6>Mark alen</h6>
-                        <span>Vice chencelor</span>
+                        <h6>{{admin.firstName}} {{admin.lastName}}</h6>
+                        <span>{{admin.role}}</span>
                     </div>
-                    <div class="social">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-                        </ul>
-                    </div>
+                  
                     <div class="description">
-                        <p>Gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate..</p>
-                    </div>
+<p>{{admin.speciality}}</p>                    </div>
                 </div> <!-- teachers left -->
             </div>
             <div class="col-lg-8">
@@ -53,19 +45,21 @@
                             <a id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">All Student</a>
                         </li>
                     </ul> <!-- nav -->
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                            <div class="dashboard-cont">
-                                <app-teachers-table></app-teachers-table>
+                    <div class="tab-content" id="myTabContent" *ngFor="let user of userTable">
+                        <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab" *ngIf="user.role=='teacher'">
+                            <div class="dashboard-cont" >
+                                <div >
+                                    <app-teachers-table></app-teachers-table>
+                                </div>
                             </div> <!-- dashboard cont -->
                         </div>
-                        <div class="tab-pane fade" id="courses" role="tabpanel" aria-labelledby="courses-tab">
+                        <div class="tab-pane fade" id="courses" role="tabpanel" aria-labelledby="courses-tab" >
                             <div class="courses-cont pt-20">
                               <app-courses-table></app-courses-table>
                             </div> <!-- courses cont -->
                         </div>
-                        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                            <div class="reviews-cont">
+                        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab" *ngIf="user.role=='student'">
+                            <div class="reviews-cont" >
                                 <app-student-table></app-student-table>
                             </div> <!-- reviews cont -->
                         </div>

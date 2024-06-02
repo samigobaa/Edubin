@@ -105,4 +105,11 @@ app.post("/api/users/login", (req, res) => {
         }
     });
 });
+// get all users
+app.get("/api/users", (req, res) => {
+    User.find().then((docs) => {
+        console.log('all user ', docs);
+        res.json({ message: docs })
+    });
+});
 module.exports = app;

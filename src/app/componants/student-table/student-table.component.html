@@ -6,20 +6,14 @@
                 <div class="shop-top-search">
                     <!-- shop bar -->
                     <div class="shop-select">
-                       <select>
-                            <option value="1">Sort by</option>
-                            <option value="1">Ascending</option>
-                            <option value="2">Descending</option>
-                            <option value="3">Price</option>
-                            <option value="4">Free</option>
-                            
-                        </select>
+                        <div class="row mr-3"><button class="btn btn-warning">Add Student</button></div>
+                        
                     </div> <!-- shop select -->
                 </div> <!-- shop top search -->
             </div>
         </div> <!-- row -->
-        <div class="tab-content" id="myTabContent">
-          <div class=" fade show active" id="shop-grid" >
+        <div class="tab-content" id="myTabContent" *ngFor="let student of studentTable">
+          <div class=" fade show active" id="shop-grid" *ngIf="student.role=='student'">
                 <div class="row justify-content-center">
                     <div class="col-6">
                         <div class="singel-publication mt-30">
@@ -34,12 +28,12 @@
                             </div>
                             <div class="text-center" >
                                 <div class="">
-                                    <h6>Magazine</h6>
+                                    <h6>{{student.firstName}}  {{student.lastName}}</h6>
                                     <span>$50.00</span>
                                 </div>
                                 <div class="row">
                                     <div class="row mr-3"><button class="btn btn-success">Dissplay</button></div>
-                                    <div class="row mr-3"><button class="btn btn-warning">Add</button></div>
+                                    
                                     <div class="row"><button class="btn btn-danger">Delete</button></div>
                                 </div>
                             

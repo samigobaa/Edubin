@@ -28,5 +28,7 @@ export class UsersService {
     return this.http.post<{ message: string, user: any }>(
       this.URL + '/login',user);
   }
-
+  getAllUsers(){
+    return this.http.get<{ message: any }>(this.URL)
+  }
 }

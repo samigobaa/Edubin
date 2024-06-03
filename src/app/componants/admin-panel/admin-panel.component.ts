@@ -13,7 +13,7 @@ userTable :any =[]
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe((res)=>{
       this.userTable=res.message;
-
+    
       console.log(res.message);
       
     })

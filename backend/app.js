@@ -112,4 +112,11 @@ app.get("/api/users", (req, res) => {
         res.json({ message: docs })
     });
 });
+// BL add user (teacher,student,parent)
+app.post("/api/users", (req, res) => {
+    console.log("Here into BL: Add user", req.body);
+    let userObjet = new User(req.body);
+    userObjet.save();
+    res.json({ message: "user added" });
+});
 module.exports = app;

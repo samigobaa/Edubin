@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-add-cours',
@@ -6,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-cours.component.css']
 })
 export class AddCoursComponent implements OnInit {
-
-  constructor() { }
+teacherForm!:FormGroup
+  constructor(private techeerService:UsersService) { }
 
   ngOnInit(): void {
   }

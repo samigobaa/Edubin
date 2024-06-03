@@ -3,11 +3,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="page-banner-cont">
-                    <h2>Add Teachers</h2>
+                    <h2>Add Teacher</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Teachers</li>
+                            <li class="breadcrumb-item active" aria-current="page">Teacher</li>
                         </ol>
                     </nav>
                 </div>  <!-- page banner cont -->
@@ -22,56 +22,94 @@
                 <div class="contact-from">
                     
                     <div class="main-form pt-45">
-                        <form id="contact-form" action="#" method="post" data-toggle="validator">
+                        <form id="contact-form" action="#" method="post" data-toggle="validator" [formGroup]="teacherForm">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="name" type="text" placeholder="First Name" data-error="Name is required." required="required">
-                                        <div class="help-block with-errors"></div>
+                                        <input formControlName="userFirstName" type="text" placeholder="First Name">
+                                        <div
+                                            *ngIf=" ((teacherForm.controls['userFirstName'].invalid) && (teacherForm.controls['userFirstName'].touched || teacherForm.controls['userFirstName'].dirty))">
+                                            <div *ngIf="teacherForm.controls['userFirstName'].errors?.['required']"
+                                                class="red">
+                                                Name required *
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div> <!-- singel form -->
+
+                                <div class="col-md-6">
+                                    <div class="singel-form form-group">
+                                        <input formControlName="userLastName" type="text" placeholder="Last Name">
+                                        <div
+                                            *ngIf=" ((teacherForm.controls['userLastName'].invalid) && (teacherForm.controls['userLastName'].touched || teacherForm.controls['userLastName'].dirty))">
+                                            <div *ngIf="teacherForm.controls['userLastName'].errors?.['required']"
+                                                class="red">
+                                                Last Name required *
+                                            </div>
+
+                                        </div>
+                                    </div> <!-- singel form -->
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="singel-form form-group">
+                                        <input formControlName="userEmail" type="email" placeholder="Email">
+                                        <div
+                                            *ngIf=" ((teacherForm.controls['userEmail'].invalid) && (teacherForm.controls['userEmail'].touched || teacherForm.controls['userEmail'].dirty))">
+                                            <div *ngIf="teacherForm.controls['userEmail'].errors?.['required']"
+                                                class="red">
+                                                Email required *
+                                            </div>
+
+                                        </div>
+                                    </div> <!-- singel form -->
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="singel-form form-group">
+                                        <input formControlName="userPassword" type="password" placeholder="password">
+                                        <div
+                                            *ngIf=" ((teacherForm.controls['userEmail'].invalid) && (teacherForm.controls['userEmail'].touched || teacherForm.controls['userEmail'].dirty))">
+                                            <div *ngIf="teacherForm.controls['userEmail'].errors?.['required']"
+                                                class="red">
+                                                Password required *
+                                            </div>
+
+                                        </div>
                                     </div> <!-- singel form -->
                                 </div>
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="text" type="text" placeholder="Last Name" data-error=" Last Name is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- singel form -->
+                                        <input formControlName="userAdresse" type="text" placeholder="Adress">
+                                        <div
+                                            *ngIf=" ((teacherForm.controls['userAdresse'].invalid) && (teacherForm.controls['userAdresse'].touched || teacherForm.controls['userAdresse'].dirty))">
+                                            <div *ngIf="teacherForm.controls['userAdresse'].errors?.['required']"
+                                                class="red">
+                                                Adresse required *
+                                            </div>
+                                        </div> <!-- singel form -->
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="email" type="email" placeholder="Email" data-error="Email is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- singel form --> 
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="singel-form form-group">
-                                        <input name="password" type="password" placeholder="password" data-error="Password  is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- singel form -->
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="singel-form form-group">
-                                        <input name="adress" type="text" placeholder="Adress" data-error="Adress is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- singel form -->
-                                </div>
-                               
-                                <div class="col-md-6">
-                                    <div class="singel-form form-group">
-                                        <input name="phone" type="text" placeholder="Phone" data-error="Phone is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- singel form -->
-                                </div>
-                                <div class="col-md-6 ml-5 mt-4" >
-                                    <div class=" form-group" >
-                                        <label for="">Your CV : </label><input name="cv" type="file"  data-error="CV is required." required="required">
-                                    </div> <!-- singel form -->
+                                        <input formControlName="userPhone" type="text" placeholder="Phone">
+                                        <div
+                                            *ngIf=" ((teacherForm.controls['userPhone'].invalid) && (teacherForm.controls['userPhone'].touched || teacherForm.controls['userPhone'].dirty))">
+                                            <div *ngIf="teacherForm.controls['userPhone'].errors?.['required']"
+                                                class="red">
+                                                Phone required *
+                                            </div>
+                                        </div> <!-- singel form -->
+                                    </div>
                                 </div>
                                 <p class="form-message"></p>
                                 <div class="col-md-12 text-center">
                                     <div class="singel-form">
-                                        <button type="submit" class="main-btn">Add</button>
+                                        <button type="submit" class="main-btn" (click)="addTeacher()">Add Teacher</button>
                                     </div> <!-- singel form -->
-                                </div> 
+                                </div>
+                                <div class="text-success">{{displayMessage}}</div> 
                             </div> <!-- row -->
                         </form>
                     </div> <!-- main form -->

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoursService } from 'src/app/services/cours.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -8,15 +9,24 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class AdminPanelComponent implements OnInit {
 userTable :any =[]
-  constructor(private userService:UsersService) { }
+courTable :any =[]
+  constructor(private userService:UsersService,private courService:CoursService) { }
 
   ngOnInit(): void {
-    this.userService.getAllUsers().subscribe((res)=>{
-      this.userTable=res.message;
-    
-      console.log(res.message);
-      
-    })
-  }
+    this.getAllUser();
+   this.getAllCours();
 
+  }
+getAllUser(){
+  this.userService.getAllUsers().subscribe((res)=>{
+    console.log(res.message); 
+    this.userTable = res.message
+  });
+}
+getAllCours(){
+  this.courService.getAllCours().subscribe((res)=>{
+    console.log(res.message);
+    this.courTable = res.message
+  })
+}
 }

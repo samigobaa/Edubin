@@ -6,7 +6,7 @@
                 <div class="shop-top-search">
                     <!-- shop bar -->
                     <div class="shop-select">
-                        <div class="row mr-3"><button class="btn btn-warning">Add Courses</button></div>
+                        <div class="row mr-3"><button class="btn btn-warning" (click)="goToAddCour()">Add Courses</button></div>
                     </div> <!-- shop select -->
                 </div> <!-- shop top search -->
             </div>
@@ -25,12 +25,13 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="text-center" >
+                            <div class="text-center" *ngFor="let cour of courTable">
                                 <div class="">
-                                    <h6>Magazine</h6>
-                                    <span>$50.00</span>
+                                    <h6>{{cour.courName}}</h6>
+                                    <span>{{cour.courNbrHours}}</span><br>
+                                    <span>{{cour.courDiscription}}</span>
                                 </div>
-                                <div class="row">
+                                <div class="row text-center" >
                                     <div class="row mr-3"><button class="btn btn-success">Dissplay</button></div>
                                     
                                     <div class="row"><button class="btn btn-danger">Delete</button></div>

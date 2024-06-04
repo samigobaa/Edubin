@@ -25,24 +25,45 @@
                         <h2>Courses</h2>
                     </div> <!-- section title -->
                     <div class="main-form pt-45">
-                        <form id="contact-form" action="#" method="post" data-toggle="validator">
+                        <form id="contact-form" action="#" method="post" data-toggle="validator" [formGroup]="coursForm">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="text" type="text" placeholder="Course Name" data-error="Name is required." required="required">
-                                        <div class="help-block with-errors"></div>
+                                        <input formControlName="courName" type="text" placeholder="Course Name" >
+                                        <div
+                                            *ngIf=" ((coursForm.controls['courName'].invalid) && (coursForm.controls['courName'].touched || coursForm.controls['courName'].dirty))">
+                                            <div *ngIf="coursForm.controls['courName'].errors?.['required']"
+                                                class="red">
+                                                Name required *
+                                            </div>
+
+                                        </div>
                                     </div> <!-- singel form -->
                                 </div>
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input name="text" type="text" placeholder="Hour's Number" data-error=" required." required="required">
-                                        <div class="help-block with-errors"></div>
+                                        <input formControlName="courNbrHours" type="text" placeholder="Hour's Number">
+                                        <div
+                                            *ngIf=" ((coursForm.controls['courNbrHours'].invalid) && (coursForm.controls['courNbrHours'].touched || coursForm.controls['courNbrHours'].dirty))">
+                                            <div *ngIf="coursForm.controls['courNbrHours'].errors?.['required']"
+                                                class="red">
+                                                Number of Hours required *
+                                            </div>
+
+                                        </div>
                                     </div> <!-- singel form -->
                                 </div>
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                    <textarea name="" id="" placeholder="Discription..."></textarea>
-                                    
+                                    <textarea formControlName="courDiscription" id="" placeholder="Discription..."></textarea>
+                                    <div
+                                            *ngIf=" ((coursForm.controls['courDiscription'].invalid) && (coursForm.controls['courDiscription'].touched || coursForm.controls['courDiscription'].dirty))">
+                                            <div *ngIf="coursForm.controls['courDiscription'].errors?.['required']"
+                                                class="red">
+                                                Discription required *
+                                            </div>
+
+                                        </div>
                                     </div> <!-- singel form -->
                                 </div>
                                 
@@ -60,8 +81,9 @@
                                 <p class="form-message"></p>
                                 <div class="col-md-12 text-center">
                                     <div class="singel-form">
-                                        <button type="submit" class="main-btn">Add</button>
-                                    </div> <!-- singel form -->
+                                        <button type="submit" class="main-btn" (click)="addCour()">Add Cour</button>
+                                    </div> 
+                                    <div class="text-success">{{displayMessage}}</div><!-- singel form -->
                                 </div> 
                             </div> <!-- row -->
                         </form>

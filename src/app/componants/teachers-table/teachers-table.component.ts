@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class TeachersTableComponent implements OnInit {
 teachersTable:any=[]
-  constructor(private userService:UsersService) { }
+  constructor(private userService:UsersService,private router:Router) { }
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe((res)=>{
@@ -19,5 +20,7 @@ teachersTable:any=[]
     })
   }
 
-
+goToAddTeacher(){
+this.router.navigate(['add-teachers'])
+}
 }

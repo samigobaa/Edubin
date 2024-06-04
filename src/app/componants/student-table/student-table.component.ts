@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class StudentTableComponent implements OnInit {
   studentTable:any=[]
-  constructor(private userService:UsersService) { }
+  constructor(private userService:UsersService,private router:Router) { }
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe((res)=>{
@@ -17,5 +18,8 @@ export class StudentTableComponent implements OnInit {
       console.log(res.message);
       
     })
+  }
+  goToAddStudent(){
+this.router.navigate(['add-Student'])
   }
 }

@@ -6,7 +6,11 @@ mongoose.connect("mongodb://127.0.0.1:27017/EdubinDB");
 const bcrypt = require('bcrypt');
 // import jwt module
 const jwt = require('jsonwebtoken');
-
+//import body parser
+const bodyParser = require("body-parser");
+// bodyParser configuration
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 // import session module
 const session = require('express-session');
 // import axios module
@@ -61,7 +65,8 @@ const storage = multer.diskStorage({
         cb(null, imgName,pdfName);
     }
 });
-const User =require('./models/user')
+const User =require('./models/user');
+const Cour =require('./models/cour');
 // Here into BL: Signup
 app.post("/api/users/signup", multer({ storage: storage }).single('userFile'), (req, res) => {
      console.log("Here into signup", req.body);
@@ -119,4 +124,19 @@ app.post("/api/users", (req, res) => {
     userObjet.save();
     res.json({ message: "user added" });
 });
+// BL add cour
+app.post("/api/cours", (req, res) => {
+    console.log("Here into BL: Add cour", req.body);
+    let courObjet = new Cour(req.body);
+    courObjet.save();
+    res.json({ message: "cour added" });
+});
+// get all cours
+app.get("/api/cours", (req, res) => {
+    Cour.find().then((docs) => {
+        console.log('all cours ', docs);
+        res.json({ message: docs })
+    });
+});
+
 module.exports = app;

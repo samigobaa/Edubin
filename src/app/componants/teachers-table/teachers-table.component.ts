@@ -23,4 +23,7 @@ teachersTable:any=[]
 goToAddTeacher(){
 this.router.navigate(['add-teachers'])
 }
+displayTeacher(id :any){
+  this.router.navigate([`teachers-panel/${id}`])
+}
 }

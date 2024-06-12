@@ -18,6 +18,10 @@ import { AddCoursComponent } from './componants/add-cours/add-cours.component';
 import { AddTeachersComponent } from './componants/add-teachers/add-teachers.component';
 import { AddStudentComponent } from './componants/add-student/add-student.component';
 import { StudentTableComponent } from './componants/student-table/student-table.component';
+import { TeacherProfileComponent } from './componants/teacher-profile/teacher-profile.component';
+import { AdmiProfileComponent } from './componants/admi-profile/admi-profile.component';
+import { ParentProfileComponent } from './componants/parent-profile/parent-profile.component';
+import { StudentProfileComponent } from './componants/student-profile/student-profile.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -31,12 +35,18 @@ const routes: Routes = [
   {path:'signup-student',component:SignupComponent},
   {path:'inscriptionTeachers',component:SignupComponent},
   {path:'admin-panel',component:AdminPanelComponent},
-  {path:'teachers-panel',component:TeachersPanelComponent},
+  {path:'teachers-panel:id',component:TeachersPanelComponent},
   {path:'student-panel',component:StudentTableComponent},
   {path:'parent-panel',component:ParentComponent},
   {path:'add-courses', component:AddCoursComponent},
   {path:'add-teachers', component:AddTeachersComponent},
-  {path:'add-Student', component:AddStudentComponent}
+  {path:'add-Student', component:AddStudentComponent},
+  {path:'teacher-profil',component:TeacherProfileComponent},
+  {path:'admin-profil',component:AdmiProfileComponent},
+  {path:'parent-profil',component:ParentProfileComponent},
+  {path:'student-profil',component:StudentProfileComponent}
+
+
   
 ];
 

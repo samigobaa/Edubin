@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CoursService } from 'src/app/services/cours.service';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -10,11 +11,21 @@ import { UsersService } from 'src/app/services/users.service';
 export class AdminPanelComponent implements OnInit {
 userTable :any =[]
 courTable :any =[]
-  constructor(private userService:UsersService,private courService:CoursService) { }
+id:any
+user:any 
+  constructor(private userService:UsersService,private courService:CoursService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllUser();
    this.getAllCours();
+   this.id = this.activatedRoute.snapshot.params['id'];
+    this.userService.getUsersById(this.id).subscribe(
+      (res)=>{
+       this.user = res.match;
+       console.log('usrt by id',this.user);
+       
+      }
+    )
 
   }
 getAllUser(){

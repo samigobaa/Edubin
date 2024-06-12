@@ -68,31 +68,39 @@ const storage = multer.diskStorage({
 const User =require('./models/user');
 const Cour =require('./models/cour');
 // Here into BL: Signup
-app.post("/api/users/signup", multer({ storage: storage }).single('userFile'), (req, res) => {
+app.post("/api/users/signup", (req, res) => {
      console.log("Here into signup", req.body);
-    // bcrypt.hash(req.body.userPassword, 10).then((cryptedPassword) => {
+    // bcrypt.hash(req.body.password, 10).then((cryptedPassword) => {
     //     console.log("Here crypted pwd", cryptedPassword);
     //     req.body.userPassword = cryptedPassword;
-        // req.body.userFile = `http://localhost:3000/shortCutPath/${req.file.filename}`;
+    //     req.body.userFile = `http://localhost:3000/shortCutPath/${req.file.filename}`;
         const user = new User(req.body);
         user.save();
         res.json({ message: "Signup With Success" });
     });
 // });
+// Here BL : Get user By Id
+app.get("api/users/:id", (req, res) => {
+    console.log("Here into BL : Get user By ID", req.params.id);
+    User.findById(req.params.id).then((doc) => {
+        console.log("Here doc", doc);
+        res.json({ user: doc });
+    });
+});
 // Here into BL: Login
 app.post("/api/users/login", (req, res) => {
     console.log("Here into BL: Login", req.body);
-    User.findOne({ email: req.body }).then((doc) => {
+    User.findOne({ email: req.body.email }).then((doc) => {
         console.log("Here doc", doc);
-        if (!doc) {
-            res.json({ message: "Check Your Email" });
-        } else {
+        // if (!doc) {
+        //     res.json({ message: "Check Your Email" });
+        // } else {
             // Doc exist
-            bcrypt.compare(req.body.password, doc.password).then((passwordResult) => {
-                console.log("Here passwordResult", passwordResult);
-                if (!passwordResult) {
-                    res.json({ message: "Check Your Pwd" });
-                } else {
+            // bcrypt.compare(req.body.password, doc.password).then((passwordResult) => {
+                // console.log("Here passwordResult", passwordResult);
+                // if (!passwordResult) {
+                //     res.json({ message: "Check Your Pwd" });
+                // } else {
                     let userToSend = {
                         role: doc.role,
                         firstName: doc.firstName,
@@ -105,11 +113,12 @@ app.post("/api/users/login", (req, res) => {
                     const token = jwt.sign(userToSend, secretKey, { expiresIn: "1h" });
                     console.log("here into Login with success", token);
                     res.json({ message: "Welcome", user: token });
-                }
+                // }
+                // })
+            
             });
-        }
-    });
-});
+        });
+
 // get all users
 app.get("/api/users", (req, res) => {
     User.find().then((docs) => {

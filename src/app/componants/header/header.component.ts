@@ -17,7 +17,7 @@ user : any ={}
     let token = sessionStorage.getItem('jwt');
     if (token) {
       this.user = jwtDecode(token);
-      console.log('token to user',this.user);
+      
       
     }
     return !!token;

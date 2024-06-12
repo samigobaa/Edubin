@@ -36,6 +36,10 @@ import { SignupParentComponent } from './componants/signup-parent/signup-parent.
 import { TeachersPanelComponent } from './componants/teachers-panel/teachers-panel.component';
 import { FormGroupDirective, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AdmiProfileComponent } from './componants/admi-profile/admi-profile.component';
+import { StudentProfileComponent } from './componants/student-profile/student-profile.component';
+import { TeacherProfileComponent } from './componants/teacher-profile/teacher-profile.component';
+import { ParentProfileComponent } from './componants/parent-profile/parent-profile.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +74,11 @@ import { HttpClientModule } from '@angular/common/http';
     CoursesTableComponent,
     SignupStudentComponent,
     SignupParentComponent,
-    TeachersPanelComponent
+    TeachersPanelComponent,
+    AdmiProfileComponent,
+    StudentProfileComponent,
+    TeacherProfileComponent,
+    ParentProfileComponent
   ],
   imports: [
     BrowserModule,

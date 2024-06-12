@@ -31,4 +31,8 @@ export class UsersService {
   getAllUsers(){
     return this.http.get<{ message: any }>(this.URL)
   }
+  getUsersById(id: any) {
+    // http://localhost:3000/users/1
+    return this.http.get<{ match: any }>(`${this.URL}/${id}`);
+  }
 }

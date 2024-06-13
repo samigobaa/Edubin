@@ -1,18 +1,19 @@
-
-<section id="shop-page" class="pt-120 pb-120 gray-bg">
-    <div class="container">
+<section id="shop-page" class="pt-120 pb-120 gray-bg" *ngFor="let teacher of teacherTable">
+    <div class="container" >
         <div class="row">
             <div class="col-lg-12">
-                <div class="shop-top-search">
+                <div class="">
                     <!-- shop bar -->
-                    <div class="shop-select">
-                        <div class="row mr-3"><button class="btn btn-warning" (click)="goToAddCour()">Add Courses</button></div>
+                    <div class="" >
+                        <div class="row mr-3" *ngIf="teacher.role == 'teacher' || teacher.role == 'admin'">
+                            <button class="btn btn-warning" (click)="goToAddCour()">Add Courses</button>
+                        </div>
                     </div> <!-- shop select -->
                 </div> <!-- shop top search -->
             </div>
         </div> <!-- row -->
         <div class="tab-content" id="myTabContent">
-          <div class=" fade show active" id="shop-grid" >
+            <div class=" fade show active" id="shop-grid">
                 <div class="row justify-content-center">
                     <div class="col-6">
                         <div class="singel-publication mt-30">
@@ -26,45 +27,25 @@
                                 </div>
                             </div>
                             <div class="text-center" *ngFor="let cour of courTable">
-                                <div class="">
-                                    <h6>{{cour.courName}}</h6>
-                                    <span>{{cour.courNbrHours}}</span><br>
-                                    <span>{{cour.courDiscription}}</span>
+                                <div class="mb-5">
+                                    <h6>Cour Name : {{cour.courName}}</h6>
+                                    <span> Number of Hours : {{cour.courNbrHours}}</span><br>
+                                    <span>Discription : {{cour.courDiscription}}</span>
                                 </div>
-                                <div class="row text-center" >
-                                    <div class="row mr-3"><button class="btn btn-success">Dissplay</button></div>
-                                    
-                                    <div class="row"><button class="btn btn-danger">Delete</button></div>
+                                <div class="row ml-5 mb-5" >
+                                    <div class="row mr-3" *ngIf="teacher.role == 'teacher' || teacher.role == 'admin'"><button class="btn btn-success">Dissplay</button></div>
+
+                                    <div class="row" *ngIf="teacher.role == 'teacher' || teacher.role == 'admin'"><button class="btn btn-danger" (click)="deleteCours()">Delete</button></div>
                                 </div>
-                            
+
                             </div>
                         </div> <!-- singel publication -->
                     </div>
-                    
+
                 </div> <!-- row -->
             </div>
-            
+
         </div> <!-- tab content -->
-        <div class="row">
-            <div class="col-lg-12">
-                <nav class="courses-pagination mt-50">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a href="#" aria-label="Previous">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="active" href="#">1</a></li>
-                        <li class="page-item"><a href="#">2</a></li>
-                        <li class="page-item"><a href="#">3</a></li>
-                        <li class="page-item">
-                            <a href="#" aria-label="Next">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>  <!-- courses pagination -->
-            </div>
-        </div>  <!-- row -->
+         <!-- row -->
     </div> <!-- container -->
 </section>

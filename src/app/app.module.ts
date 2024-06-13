@@ -40,6 +40,10 @@ import { AdmiProfileComponent } from './componants/admi-profile/admi-profile.com
 import { StudentProfileComponent } from './componants/student-profile/student-profile.component';
 import { TeacherProfileComponent } from './componants/teacher-profile/teacher-profile.component';
 import { ParentProfileComponent } from './componants/parent-profile/parent-profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -85,9 +89,14 @@ import { ParentProfileComponent } from './componants/parent-profile/parent-profi
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ConfirmDialogModule,
+    ButtonModule
   ],
-  providers: [],
+  providers: [
+    ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -78,16 +78,16 @@
 
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
-                                <li class="nav-item">
+                                <li class="">
                                     <a class="active" routerLink="">Home</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="">
                                     <a routerLink="courses">Courses</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="">
                                     <a routerLink="teachers">Our teachers</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="">
                                     <a *ngIf="isLoggedIn() && user.role=='admin'">Dashboard Admin</a>
                                     <ul class="sub-menu">
                                         <li><a routerLink="add-teachers">Add Teachers</a></li>
@@ -96,14 +96,14 @@
                                         <li><a routerLink="admin-panel">Panel</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item">
+                                <li class="">
                                     <a *ngIf="isLoggedIn() && user.role=='teacher'">Dashboard Teachers</a>
                                     <ul class="sub-menu">
                                         <li><a routerLink="add-courses">Add courses</a></li>
                                         <li><a routerLink="teachers-panel">Panel</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item">
+                                <li class="">
                                     <a *ngIf="!isLoggedIn()">Inscription</a>
                                     <ul class="sub-menu">
                                         <li><a routerLink="inscriptionAdmin">Admin</a></li>

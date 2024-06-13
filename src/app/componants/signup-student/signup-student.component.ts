@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup-student',
@@ -11,7 +13,7 @@ export class SignupStudentComponent implements OnInit {
   studentForm !:FormGroup
   imagePreview :any
   student:any
-  constructor(private formBuilder:FormBuilder , private studentService:UsersService) { }
+  constructor(private formBuilder:FormBuilder , private studentService:UsersService, private router:Router) { }
 
   ngOnInit(): void {
     this.studentForm = this.formBuilder.group({
@@ -42,6 +44,24 @@ export class SignupStudentComponent implements OnInit {
     }
     } 
     addStudent(){
-      this.studentService.addUsers(this.student,this.studentForm.value.studentPhoto).subscribe();
+      this.studentService.addUsers(this.student,this.studentForm.value.studentPhoto).subscribe((res)=>{
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Done !"
+        });
+        
+      });
+      this.router.navigate([''])
     }
 }

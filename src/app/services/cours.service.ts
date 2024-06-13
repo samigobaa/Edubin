@@ -17,4 +17,7 @@ export class CoursService {
   getAllCours() {
     return this.httpClient.get<{ message: any }>(this.courUrl)
   }
+  deleteCours(id: any) {
+    return this.httpClient.delete<{ message: any }>(`${this.courUrl}/${id}`);
+  }
 }

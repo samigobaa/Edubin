@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-inscription-teachers',
@@ -61,7 +62,21 @@ export class InscriptionTeachersComponent implements OnInit {
     }
     console.log('Here user', user);
     this.techaerService.addUsers(this.teacher,this.teacherForm.value.teacherCV).subscribe((response) => {
-      console.log('Here response after signup', response.message);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Done"
+      });
     });
   }
 

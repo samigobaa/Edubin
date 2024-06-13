@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-teachers',
@@ -33,7 +34,22 @@ displayMessage :any =''
     console.log('Here student', student);
     this.teacherService.addUsers(student, this.teacherForm.value.userFile).subscribe((response) => {
       console.log('Here response after signup', response.message);
-      this.displayMessage = response.message
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "teacher add successfully"
+      });
     });
+  
   }
 }

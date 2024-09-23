@@ -11,7 +11,7 @@ const userSchema = mongoose.Schema({
     speciality:String,
     adresse:String,
   userFile:String,
-  noteStudent:String
+  noteStudent:String // todo remove
 });
 
 const user = mongoose.model("User", userSchema);

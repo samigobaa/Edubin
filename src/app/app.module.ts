@@ -44,6 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmationService } from 'primeng/api';
+import { StudentNoteComponent } from './componants/student-note/student-note.component';
+
 
 @NgModule({
   declarations: [
@@ -82,7 +84,9 @@ import { ConfirmationService } from 'primeng/api';
     AdmiProfileComponent,
     StudentProfileComponent,
     TeacherProfileComponent,
-    ParentProfileComponent
+    ParentProfileComponent,
+    StudentNoteComponent,
+   
   ],
   imports: [
     BrowserModule,

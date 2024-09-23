@@ -11,6 +11,7 @@ const userSchema = mongoose.Schema({
     speciality:String,
     adresse:String,
   userFile:String,
+  noteStudent:String
 });
 
 const user = mongoose.model("User", userSchema);

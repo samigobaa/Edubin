@@ -24,7 +24,8 @@ displayMessage :any =''
       userSpeciality: ['', Validators.required],
       userPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
       userPhone: ['', [Validators.required, Validators.pattern('[0-9]{8}')]],
-      userFile: ['']
+      userFile: [''],
+      noteStudent : []
 
 
     })

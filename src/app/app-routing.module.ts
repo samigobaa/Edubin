@@ -22,6 +22,8 @@ import { TeacherProfileComponent } from './componants/teacher-profile/teacher-pr
 import { AdmiProfileComponent } from './componants/admi-profile/admi-profile.component';
 import { ParentProfileComponent } from './componants/parent-profile/parent-profile.component';
 import { StudentProfileComponent } from './componants/student-profile/student-profile.component';
+import { StudentNoteComponent } from './componants/student-note/student-note.component';
+
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -35,7 +37,7 @@ const routes: Routes = [
   {path:'signup-student',component:SignupComponent},
   {path:'inscriptionTeachers',component:SignupComponent},
   {path:'admin-panel',component:AdminPanelComponent},
-  {path:'teachers-panel:id',component:TeachersPanelComponent},
+  {path:'teachers-panel',component:TeachersPanelComponent},
   {path:'student-panel',component:StudentTableComponent},
   {path:'parent-panel',component:ParentComponent},
   {path:'add-courses', component:AddCoursComponent},
@@ -44,7 +46,9 @@ const routes: Routes = [
   {path:'teacher-profil',component:TeacherProfileComponent},
   {path:'admin-profil',component:AdmiProfileComponent},
   {path:'parent-profil',component:ParentProfileComponent},
-  {path:'student-profil',component:StudentProfileComponent}
+  {path:'student-profil',component:StudentProfileComponent},
+  {path:'student-Note',component:StudentNoteComponent}
+ 
 
 
   

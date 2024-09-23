@@ -19,6 +19,7 @@ export class UsersService {
     formData.append("role", userObjet.role );
     formData.append("speciality", userObjet.userSpeciality );
     formData.append("userFile", userFile);
+    formData.append("noteStudent", userObjet.noteStudent);
     
     
     return this.http.post<{ message: string }>(this.URL + '/signup', formData);

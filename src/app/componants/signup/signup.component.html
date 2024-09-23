@@ -1,5 +1,4 @@
-<section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8"
-    style="background-image: url(assets/images/page-banner-1.jpg)">
+<section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8" style="background-image: url(assets/images/page-banner-1.jpg)">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -16,30 +15,25 @@
         </div> <!-- row -->
     </div> <!-- container -->
 </section>
-<section id="contact-page" class="pt-90 pb-120 gray-bg ">
+<section id="contact-page" class="pt-90 pb-120 gray-bg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="contact-from">
                     <div class="section-title">
                         <h1>{{title}}</h1>
-                        
                     </div> <!-- section title -->
                     <div class="main-form pt-45">
-                        <form id="contact-form" action="#" method="post" data-toggle="validator"
-                            [formGroup]="signupForm">
+                        <form id="contact-form" action="#" method="post" data-toggle="validator" [formGroup]="signupForm">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
                                         <input formControlName="userFirstName" type="text" placeholder="First Name*">
-                                        <div
-                                            *ngIf=" ((signupForm.controls['userFirstName'].invalid) && (signupForm.controls['userFirstName'].touched || signupForm.controls['userFirstName'].dirty))">
-                                            <div *ngIf="signupForm.controls['userFirstName'].errors?.['required']"
-                                                class="red">
+                                        <div *ngIf="(signupForm.controls['userFirstName'].invalid) && (signupForm.controls['userFirstName'].touched || signupForm.controls['userFirstName'].dirty)">
+                                            <div *ngIf="signupForm.controls['userFirstName'].errors?.['required']" class="red">
                                                 Name required *
                                             </div>
-                                            <div *ngIf="signupForm.controls['userFirstName'].errors?.['minlength']"
-                                                class="red">
+                                            <div *ngIf="signupForm.controls['userFirstName'].errors?.['minlength']" class="red">
                                                 Your name must have 3 chars *
                                             </div>
                                         </div>
@@ -48,14 +42,11 @@
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
                                         <input formControlName="userLastName" type="text" placeholder="Last Name*">
-                                        <div
-                                            *ngIf=" ((signupForm.controls['userLastName'].invalid) && (signupForm.controls['userLastName'].touched || signupForm.controls['userLastName'].dirty))">
-                                            <div *ngIf="signupForm.controls['userLastName'].errors?.['required']"
-                                                class="red">
+                                        <div *ngIf="(signupForm.controls['userLastName'].invalid) && (signupForm.controls['userLastName'].touched || signupForm.controls['userLastName'].dirty)">
+                                            <div *ngIf="signupForm.controls['userLastName'].errors?.['required']" class="red">
                                                 Last name required *
                                             </div>
-                                            <div *ngIf="signupForm.controls['userLastName'].errors?.['minlength']"
-                                                class="red">
+                                            <div *ngIf="signupForm.controls['userLastName'].errors?.['minlength']" class="red">
                                                 Your name must have 3 chars *
                                             </div>
                                         </div>
@@ -65,8 +56,7 @@
                                     <div class="singel-form form-group">
                                         <input formControlName="userEmail" type="email" placeholder="Email*">
                                     </div>
-                                    <div
-                                        *ngIf=" ((signupForm.controls['userEmail'].invalid) && (signupForm.controls['userEmail'].touched || signupForm.controls['userEmail'].dirty))">
+                                    <div *ngIf="(signupForm.controls['userEmail'].invalid) && (signupForm.controls['userEmail'].touched || signupForm.controls['userEmail'].dirty)">
                                         <div *ngIf="signupForm.controls['userEmail'].errors?.['required']" class="red">
                                             Email required
                                         </div>
@@ -74,98 +64,83 @@
                                             Email error
                                         </div>
                                     </div>
-                                    <!-- singel form -->
                                 </div>
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input formControlName="userPassword" type="Password" placeholder="Password*">
-
+                                        <input formControlName="userPassword" type="password" placeholder="Password*">
                                     </div>
-                                    <div
-                                        *ngIf=" ((signupForm.controls['userPassword'].invalid) && (signupForm.controls['userPassword'].touched || signupForm.controls['userPassword'].dirty))">
-                                        <div *ngIf="signupForm.controls['userPassword'].errors?.['required']"
-                                            class="red">
+                                    <div *ngIf="(signupForm.controls['userPassword'].invalid) && (signupForm.controls['userPassword'].touched || signupForm.controls['userPassword'].dirty)">
+                                        <div *ngIf="signupForm.controls['userPassword'].errors?.['required']" class="red">
                                             Password required
                                         </div>
-                                        <div *ngIf="signupForm.controls['userPassword'].errors?.['minlength'] || signupForm.controls['userPassword'].errors?.['maxlength']"
-                                            class="red">
+                                        <div *ngIf="signupForm.controls['userPassword'].errors?.['minlength'] || signupForm.controls['userPassword'].errors?.['maxlength']" class="red">
                                             <ul>
-                                                <li >At least 8 characters in length</li>
+                                                <li>At least 8 characters in length</li>
                                             </ul>
                                         </div>
-                                        <div *ngIf="signupForm.controls['userPassword'].errors?.['pattern']"
-                                            class="red">
+                                        <div *ngIf="signupForm.controls['userPassword'].errors?.['pattern']" class="red">
                                             <ul>
-                                                <li>Lowercase letters,Uppercase letters,Numbers,Special characters</li>
-                                                
+                                                <li>Lowercase letters, Uppercase letters, Numbers, Special characters</li>
                                             </ul>
                                         </div>
-
-                                    </div> <!-- singel form -->
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
-                                        <input formControlName="userAdresse" type="text" placeholder="Adresse*">
-                                        <div
-                                            *ngIf=" ((signupForm.controls['userAdresse'].invalid) && (signupForm.controls['userAdresse'].touched || signupForm.controls['userAdresse'].dirty))">
-                                            <div *ngIf="signupForm.controls['userAdresse'].errors?.['required']"
-                                                class="red">
-                                                Adresse required *
+                                        <input formControlName="userAdresse" type="text" placeholder="Address*">
+                                        <div *ngIf="(signupForm.controls['userAdresse'].invalid) && (signupForm.controls['userAdresse'].touched || signupForm.controls['userAdresse'].dirty)">
+                                            <div *ngIf="signupForm.controls['userAdresse'].errors?.['required']" class="red">
+                                                Address required *
                                             </div>
-                                            
                                         </div>
                                     </div> <!-- singel form -->
                                 </div>
-
                                 <div class="col-md-6">
                                     <div class="singel-form form-group">
                                         <input formControlName="userPhone" type="text" placeholder="Phone*">
                                     </div>
-                                    <div
-                                        *ngIf=" ((signupForm.controls['userPhone'].invalid) && (signupForm.controls['userPhone'].touched || signupForm.controls['userPhone'].dirty))">
+                                    <div *ngIf="(signupForm.controls['userPhone'].invalid) && (signupForm.controls['userPhone'].touched || signupForm.controls['userPhone'].dirty)">
                                         <div *ngIf="signupForm.controls['userPhone'].errors?.['required']" class="red">
                                             Phone required *
                                         </div>
                                         <div *ngIf="signupForm.controls['userPhone'].errors?.['pattern']" class="red">
                                             Phone error
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
+
                                 <div class="col-md-6">
-                                    <div class="singel-form form-group">
-                                        <input formControlName="userSpeciality" type="text" placeholder="Speciality*">
-                                        <div
-                                            *ngIf=" ((signupForm.controls['userSpeciality'].invalid) && (signupForm.controls['userSpeciality'].touched || signupForm.controls['userSpeciality'].dirty))">
-                                            <div *ngIf="signupForm.controls['userSpeciality'].errors?.['required']"
-                                                class="red">
-                                                Speciality required *
-                                            </div>
-                                            
-                                        </div>
-                                    </div> <!-- singel form -->
+                                    <!-- Pour les étudiants -->
+                                    <div class="singel-form form-group" *ngIf="userRole === 'student'">
+                                        <input type="file" (change)="onFileSelected($event)" />
+                                        <label>Upload your photo</label>
+                                        <img *ngIf="imagePreview" [src]="imagePreview" alt="Image Preview" style="max-width: 100px; max-height: 100px;" />
+                                    </div>
+
+                                    <!-- Pour les enseignants -->
+                                    <div class="singel-form form-group" *ngIf="userRole === 'teacher'">
+                                        <input type="file" (change)="onFileSelected($event)" />
+                                        <label>Upload your CV</label>
+                                        <embed *ngIf="pdfPreview" [src]="pdfPreview" type="application/pdf" style="width: 100px; height: 100px;" />
+                                    </div>
+
+                                    <!-- Pour les parents -->
+                                    <div class="singel-form form-group" *ngIf="userRole === 'parent'">
+                                        <input formControlName="additionalInfo" type="text" placeholder="Additional Information">
+                                    </div>
                                 </div>
-                                <!-- <div class="col-md-6">
-                                <div class="singel-form form-group" style="visibility:   hidden; ">
-                                    <input type="file" class="form-control" #filePicker (change)='onFileSelected($event)' />
-                                  </div>
-                                  <div style="margin-top: -40px;">
-                                    <button class="btn btn-info  " (click)="filePicker.click()">Upload Your CV</button>
-                                  </div>
-                                </div> -->
+
                                 <p class="form-message"></p>
                                 <div class="col-md-12 text-center">
                                     <div class="singel-form">
                                         <button type="submit" class="main-btn" (click)="signup()">Sign Up</button>
                                     </div>
-                                    
                                 </div>
-                            </div> <!-- row -->
+                            </div> 
                         </form>
-                    </div> <!-- main form -->
-                </div> <!--  contact from -->
+                    </div>
+                </div> 
             </div>
-
-        </div> <!-- row -->
-    </div> <!-- container -->
-
+        </div> 
+    </div> 
 </section>

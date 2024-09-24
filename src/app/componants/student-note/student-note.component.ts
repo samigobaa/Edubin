@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {NotesService} from 'src/app/services/notes.service';
-import {UsersService} from 'src/app/services/users.service';
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormArray, FormBuilder, Validators } from '@angular/forms';
+import { NotesService } from 'src/app/services/notes.service';
+import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,14 +10,17 @@ import Swal from 'sweetalert2';
   styleUrls: ['./student-note.component.css']
 })
 export class StudentNoteComponent implements OnInit {
-  noteForm: FormArray; // initialisation
-  studentTable: any[] = [];
+  noteForm!: FormArray; // FormArray for holding student note forms
+  studentTable: any[] = []; // Array for holding student data
 
-  constructor(private formBuilder: FormBuilder, private noteService: NotesService, private userService: UsersService) {
-  }
-
+  constructor(
+    private formBuilder: FormBuilder,
+    private noteService: NotesService,
+    private userService: UsersService
+  ) {}
 
   ngOnInit(): void {
+    this.noteForm = this.formBuilder.array([]); // Initialize as a FormArray
     this.getAllUsers();
   }
 
@@ -25,7 +28,8 @@ export class StudentNoteComponent implements OnInit {
     this.userService.getAllUsers().subscribe((res) => {
       const users: any[] = res.message;
       this.studentTable = users.filter(st => st.role === 'student');
-      // build note form
+
+      // Build note forms for each student
       this.studentTable.forEach(student => {
         const studentNoteFormGroup = this.formBuilder.group({
           firstName: [student.firstName, Validators.required],
@@ -34,23 +38,21 @@ export class StudentNoteComponent implements OnInit {
           studentNote: ['', [Validators.required, Validators.min(0), Validators.max(20)]]
         });
 
-        // init
-        this.noteForm.push(studentNoteFormGroup)
-      })
+        this.noteForm.push(studentNoteFormGroup); // Push the new FormGroup into the FormArray
+      });
 
-
-
-      console.log(res.message);
-
-    })
+      console.log('Form Array after populating:', this.noteForm); // Log to debug
+    });
   }
 
-  addNote(studentForm: AbstractControl<any>) {
-    let note = studentForm.value.studentNote;
-    let studentId = studentForm.value.studentID
-    console.log('Here cour', note);
+  addNote(studentForm: AbstractControl) {
+    const note = studentForm.value.studentNote; // Extract the note value
+    const studentId = studentForm.value.studentID; // Extract the student ID
+
+    console.log('Here note', note);
     this.noteService.addNote(note, studentId).subscribe((response) => {
       console.log('Here response after add', response.message);
+
       const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
@@ -62,12 +64,13 @@ export class StudentNoteComponent implements OnInit {
           toast.onmouseleave = Swal.resumeTimer;
         }
       });
+
       Toast.fire({
         icon: "success",
-        title: "Note add successfully"
+        title: "Note added successfully"
       });
+
+      studentForm.reset(); // Reset the form after submission (optional)
     });
   }
-
 }
-

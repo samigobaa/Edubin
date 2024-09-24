@@ -15,68 +15,45 @@
         </div> <!-- row -->
     </div> <!-- container -->
 </section>
-<section id="contact-page" class="pt-90 pb-120 gray-bg ">
+<section id="contact-page" class="pt-90 pb-120 gray-bg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="contact-from">
                     <div class="section-title">
                         <h1>Add Note</h1>
-
                     </div> <!-- section title -->
 
-                    <div class="main-form pt-45" *ngFor="let studentForm of noteForm.controls; let i= index">
-                        <form id="contact-form" action="#" method="post" data-toggle="validator" [formArrayName]="studentForm">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="singel-form form-group">
-                                        <label>{{ studentForm.value.firstName + ' ' + studentForm.value.lastName }}</label>
-                                    </div> <!-- singel form -->
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="singel-form form-group">
-                                        <input formControlName="studentNote" type="number" placeholder="Donner Note" >
-
-                                        <!-- Validation des erreurs -->
-                                        <div *ngIf="studentForm.controls['studentNote'].invalid &&
-                                                    (noteForm.controls['studentNote'].touched || noteForm.controls['studentNote'].dirty)">
-
-                                            <!-- Message d'erreur si le champ est requis -->
-                                            <div *ngIf="noteForm.controls['studentNote'].errors?.['required']" class="red">
-                                                Note requise *
-                                            </div>
-
-                                            <!-- Message d'erreur si la valeur est inférieure à 0 -->
-                                            <div *ngIf="noteForm.controls['studentNote'].errors?.['min']" class="red">
-                                                La note ne peut pas être inférieure à 0.
-                                            </div>
-
-                                            <!-- Message d'erreur si la valeur est supérieure à 20 -->
-                                            <div *ngIf="noteForm.controls['studentNote'].errors?.['max']" class="red">
-                                                La note ne peut pas dépasser 20.
-                                            </div>
-
+                    <div class="main-form pt-45">
+                        <div formArrayName="noteForm">
+                            <div *ngFor="let studentForm of noteForm.controls; let i = index" [formGroupName]="i">
+                                <form (ngSubmit)="addNote(studentForm)">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="singel-form form-group">
+                                                <label>{{ studentForm.value.firstName + ' ' + studentForm.value.lastName }}</label>
+                                            </div> <!-- singel form -->
                                         </div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <p class="form-message"></p>
-                                <div class="col-md-12 text-center">
-                                    <div class="singel-form">
-                                        <button type="submit" class="main-btn" (click)="addNote(studentForm)">Add Note</button>
-                                    </div>
-
-                                </div>
-                            </div> <!-- row -->
-                        </form>
+                                        <div class="col-md-9">
+                                            <div class="singel-form form-group">
+                                                <input formControlName="studentNote" type="number" placeholder="Donner Note" required>
+                                                <div *ngIf="studentForm.get('studentNote')?.invalid && (studentForm.get('studentNote')?.touched || studentForm.get('studentNote')?.dirty)">
+                                                    <small class="text-danger">Note is required and must be between 0 and 20.</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 text-center">
+                                            <div class="singel-form">
+                                                <button type="submit" class="main-btn" [disabled]="studentForm.invalid">Add Note</button>
+                                            </div>
+                                        </div>
+                                    </div> <!-- row -->
+                                </form>
+                            </div> <!-- student form -->
+                        </div> <!-- formArray -->
                     </div> <!-- main form -->
-                </div> <!--  contact from -->
+                </div> <!-- contact from -->
             </div>
-
         </div> <!-- row -->
     </div> <!-- container -->
-
 </section>

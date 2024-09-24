@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, Validators } from '@angular/forms';
+import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { NotesService } from 'src/app/services/notes.service';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
@@ -20,11 +20,11 @@ export class StudentNoteComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.noteForm = this.formBuilder.array([]); // Initialize as a FormArray
     this.getAllUsers();
   }
 
   getAllUsers() {
+    this.noteForm = this.formBuilder.array([]); // Initialize as a FormArray
     this.userService.getAllUsers().subscribe((res) => {
       const users: any[] = res.message;
       this.studentTable = users.filter(st => st.role === 'student');
@@ -34,7 +34,7 @@ export class StudentNoteComponent implements OnInit {
         const studentNoteFormGroup = this.formBuilder.group({
           firstName: [student.firstName, Validators.required],
           lastName: [student.lastName, Validators.required],
-          studentID: [student.studentId],
+          studentID: [student._id],
           studentNote: ['', [Validators.required, Validators.min(0), Validators.max(20)]]
         });
 
@@ -59,7 +59,7 @@ export class StudentNoteComponent implements OnInit {
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
-        didOpen: (toast) => {
+        didOpen: (toast: any) => {
           toast.onmouseenter = Swal.stopTimer;
           toast.onmouseleave = Swal.resumeTimer;
         }
@@ -72,5 +72,9 @@ export class StudentNoteComponent implements OnInit {
 
       studentForm.reset(); // Reset the form after submission (optional)
     });
+  }
+
+  toFormGroup(studentForm: AbstractControl) {
+    return studentForm as FormGroup;
   }
 }

@@ -25,9 +25,9 @@
                     </div> <!-- section title -->
 
                     <div class="main-form pt-45">
-                        <div formArrayName="noteForm">
-                            <div *ngFor="let studentForm of noteForm.controls; let i = index" [formGroupName]="i">
-                                <form (ngSubmit)="addNote(studentForm)">
+                        <div *ngIf="noteForm">
+                            <div *ngFor="let studentForm of noteForm.controls; let i = index">
+                                <form (ngSubmit)="addNote(studentForm)" [formGroup]="toFormGroup(studentForm)">
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="singel-form form-group">

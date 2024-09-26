@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoursService } from 'src/app/services/cours.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -8,12 +9,20 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class TeachersPanelComponent implements OnInit {
 teacherTable :any =[]
-  constructor(private techerService:UsersService) { }
+coursTable :any =[]
+  constructor(
+    private techerService:UsersService,
+    private courService:CoursService
+  ) { }
 
   ngOnInit(): void {
-    this.techerService.getAllUsers().subscribe((res)=>{
-      this.teacherTable = res.message
-      console.log('teacher table',this.teacherTable);
+    this.techerService.getAllUsers().subscribe((res) => {
+      const users: any[] = res.message;
+      this.teacherTable = users.filter(st => st.role === 'teacher');
+  });
+    this.courService.getAllCours().subscribe((res)=>{
+      this.coursTable = res.message
+      console.log('cours table',this.coursTable);
       
     })
   }

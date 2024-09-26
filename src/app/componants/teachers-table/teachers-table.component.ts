@@ -12,14 +12,14 @@ export class TeachersTableComponent implements OnInit {
 teachersTable:any=[]
   constructor(private userService:UsersService,private router:Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   this.getAllUsers();
   }
 getAllUsers(){
-  this.userService.getAllUsers().subscribe((res)=>{
-    this.teachersTable=res.message;
-
-    console.log(res.message);
+  this.userService.getAllUsers().subscribe((res) => {
+    const users: any[] = res.message;
+    this.teachersTable = users.filter(st => st.role === 'teacher');
+    console.log('teacher table',this.teachersTable);
     
   })
 }

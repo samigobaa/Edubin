@@ -121,6 +121,7 @@
                                     <a routerLink="admin-profil" *ngIf="isLoggedIn() && user.role=='admin'">{{user.firstName}} {{user.lastName}} </a>
                                     <a routerLink="teacher-profil" *ngIf="isLoggedIn() && user.role=='teacher'">{{user.firstName}} {{user.lastName}}</a>
                                     <a routerLink="student-profil" *ngIf="isLoggedIn() && user.role=='student'">{{user.firstName}} {{user.lastName}}</a>
+                                    <a routerLink="student-profil" *ngIf="isLoggedIn() && user.role=='parent'">{{user.firstName}} {{user.lastName}}</a>
                                 </li>
                                 <li><a routerLink="login" *ngIf="!isLoggedIn()">Login</a></li>
                                 <li class="nav-item" *ngIf="isLoggedIn()">

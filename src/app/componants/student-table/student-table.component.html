@@ -1,26 +1,44 @@
 <section id="shop-page" class="pt-120 pb-120 gray-bg">
     <div class="container">
-        <div class="row">
+        <div class="row"></div>
             <div class="col-lg-12">
                 <div class="shop-top-search">
                     <!-- shop bar -->
                     <div class="shop-select">
-
+                        <div class="row mr-3"><button class="btn btn-warning" (click)="goToAddStudent()">Add Student</button></div>
                     </div> <!-- shop select -->
                 </div> <!-- shop top search -->
-            </div>
-        </div> <!-- row -->
-        <div class="tab-content" id="myTabContent" >
+            
+        </div>
+        <div class="tab-content" id="myTabContent">
             <div class=" fade show active" id="shop-grid" >
-                <div class="row justify-content-center">
-                    <div class="col-6">
-                        <!-- singel publication -->
-                    </div>
-
-                </div> <!-- row -->
-            </div>
-
-        </div> <!-- tab content -->
+                  <div class="row justify-content-center">
+                      <div class="col-6" *ngFor="let student of studentTable">
+                          <div class="singel-publication mt-30" >
+                              <div class="image">
+                                  <img [src]="student.userFile" alt="Publication">
+                                  
+                              </div>
+                              <div class="text-center" >
+                                  <div class="">
+                                      <h1>{{student.firstName}} {{student.lastName}}</h1>
+                                      <span>{{student.speciality}}</span>
+                                  </div>
+                                  <div class="row">
+                                      <div class="row mr-3"><button class="btn btn-success" (click)="displayTeacher(student._id)">Dissplay</button></div>
+                                      
+                                      <div class="row"><button class="btn btn-danger" (click)="deleteTeacher(student._id)">Delete</button></div>
+                                  </div>
+                              
+                              </div>
+                          </div> <!-- singel publication -->
+                      </div>
+                      
+                  </div> <!-- row -->
+              </div>
+              
+          </div> <!-- row -->
+       
      
     </div> <!-- container -->
 </section>

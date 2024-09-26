@@ -70,7 +70,7 @@ export class StudentNoteComponent implements OnInit {
         title: "Note added successfully"
       });
 
-      studentForm.reset(); // Reset the form after submission (optional)
+      // studentForm.reset(); // Reset the form after submission (optional)
     });
   }
 

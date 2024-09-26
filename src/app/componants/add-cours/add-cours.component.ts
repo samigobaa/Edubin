@@ -12,14 +12,26 @@ import Swal from 'sweetalert2';
 export class AddCoursComponent implements OnInit {
   coursForm!:FormGroup
   cour :any ={}
+  userTable : any =[]
   displayMessage :any =''
-  constructor(private formBuilder:FormBuilder, private courService:CoursService) { }
+  constructor(
+    private formBuilder:FormBuilder, 
+    private courService:CoursService,
+ private userServices:UsersService 
+  ) { }
 
   ngOnInit(): void {
     this.coursForm = this.formBuilder.group({
       courName:['',Validators.required],
       courNbrHours :['',Validators.required],
       courDiscription: ['',Validators.required]
+    })
+    this.getAllUsers()
+  }
+  getAllUsers(){
+    this.userServices.getAllUsers().subscribe((res)=>{
+      this.userTable = res.message
+      console.log('all users',this.userTable); 
     })
   }
 addCour(){

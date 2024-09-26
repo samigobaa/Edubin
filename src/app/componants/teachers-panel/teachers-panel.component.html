@@ -15,15 +15,15 @@
         </div> <!-- row -->
     </div> <!-- container -->
 </section>
-<section id="teachers-singel" class="pt-70 pb-120 gray-bg" *ngFor="let teacher of teacherTable">
+<section id="teachers-singel" class="pt-70 pb-120 gray-bg" >
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-8">
-                <div class="teachers-left mt-50">
-                    <div class="hero">
+                <div class="teachers-left mt-50" *ngFor="let teacher of teacherTable">
+                    <div>
                         <img src="assets/images/teachers/t-1.jpg" alt="Teachers">
-                    </div>
-                    <div class="name"*ngIf="teacher.role == 'teacher'">
+                    
+                    <div class="name">
                         <h6>{{teacher.firstName}} {{teacher.lastName}}</h6>
                         <span>{{teacher.speciality}}</span>
                     </div>
@@ -38,6 +38,7 @@
                     <div class="description">
                         <p>Gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate..</p>
                     </div>
+                </div>
                 </div> <!-- teachers left -->
             </div>
             <div class="col-lg-8">
@@ -50,7 +51,8 @@
                     </ul> <!-- nav -->
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                            <div class="dashboard-cont">
+                            <div class="dashboard-cont" >
+
                                 <app-courses-table></app-courses-table>
                             </div> <!-- dashboard cont -->
                         </div>

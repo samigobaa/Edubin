@@ -7,57 +7,28 @@
                     <h2>Meet Our teachers</h2>
                 </div> <!-- section title -->
                 <div class="teachers-cont">
-                    <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet . Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt  mauris. <br> <br> auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet . Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt  mauris</p>
+                    <p>Nos Enseignants, les Architectes du Savoir
+                        Chez nous, les enseignants ne sont pas simplement des transmetteurs de connaissances, mais des guides passionnés qui accompagnent chaque élève dans son parcours éducatif. Forts de leur expertise et de leur engagement, ils créent des environnements d'apprentissage dynamiques où la curiosité et la créativité sont encouragées. Chaque enseignant apporte une richesse d'expériences et de perspectives, cultivant un espace où chaque élève se sent soutenu pour atteindre son plein potentiel. À travers leur dévouement et leur amour pour l'enseignement, ils inspirent les générations futures à penser de manière critique, à agir avec compassion, et à poursuivre l'excellence.</p>
                     <a href="#" class="main-btn mt-55">Career with us</a>
                 </div> <!-- teachers cont -->
             </div>
             <div class="col-lg-6 offset-lg-1">
                 <div class="teachers mt-20">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="singel-teachers mt-30 text-center">
-                                <div class="image">
-                                    <img src="images/teachers/t-1.jpg" alt="Teachers">
-                                </div>
-                                <div class="cont">
-                                    <a href="teachers-singel.html"><h6>Mark alen</h6></a>
-                                    <span>Vice chencelor</span>
-                                </div>
-                            </div> <!-- singel teachers -->
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="singel-teachers mt-30 text-center">
-                                <div class="image">
-                                    <img src="images/teachers/t-2.jpg" alt="Teachers">
-                                </div>
-                                <div class="cont">
-                                    <a href="teachers-singel.html"><h6>David card</h6></a>
-                                    <span>Pro chencelor</span>
-                                </div>
-                            </div> <!-- singel teachers -->
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="singel-teachers mt-30 text-center">
+                        <div class="col-sm-4" *ngFor="let user of userTable">
+                            <div class="singel-teachers mt-30 text-center" >
                                 <div class="image">
                                     <img src="assets/images/teachers/t-3.jpg" alt="Teachers">
                                 </div>
                                 <div class="cont">
-                                    <a href="teachers-singel.html"><h6>Rebeka alig</h6></a>
-                                    <span>Pro chencelor</span>
+                                    <a href="teachers-singel.html">
+                                        <h6>{{user.firstName+' '+user.lastName}}</h6>
+                                    </a>
+                                    <span>{{user.speciality}}</span>
                                 </div>
                             </div> <!-- singel teachers -->
                         </div>
-                        <div class="col-sm-6">
-                            <div class="singel-teachers mt-30 text-center">
-                                <div class="image">
-                                    <img src="assets/images/teachers/t-4.jpg" alt="Teachers">
-                                </div>
-                                <div class="cont">
-                                    <a href="teachers-singel.html"><h6>Hanna bein</h6></a>
-                                    <span>Aerobics head</span>
-                                </div>
-                            </div> <!-- singel teachers -->
-                        </div>
+
                     </div> <!-- row -->
                 </div> <!-- teachers -->
             </div>

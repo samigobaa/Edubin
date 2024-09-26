@@ -26,6 +26,9 @@ app.use(session({
     saveUninitialized: true
 }));
 
+const cors = require('cors');
+app.use(cors());
+
 // Configuration de Multer pour le stockage des fichiers
 const MIME_TYPE = {
     'image/png': 'png',
@@ -34,20 +37,20 @@ const MIME_TYPE = {
 };
 
 const storage = multer.diskStorage({
-    // Destination des fichiers
+    // Destination of files
     destination: (req, file, cb) => {
         const isValid = MIME_TYPE[file.mimetype];
         if (isValid) {
-            cb(null, 'backend/uploads'); // Dossier de destination
+            cb(null, 'backend/uploads'); // Destination folder
         } else {
-            cb(new Error('Invalid file type'), false); // Gestion des erreurs
+            cb(new Error('Invalid file type'), false); // Error handling
         }
     },
-    // Nom du fichier
+    // Filename
     filename: (req, file, cb) => {
         const name = file.originalname.toLowerCase().split(' ').join('-');
         const extension = MIME_TYPE[file.mimetype];
-        cb(null, name + '-' + Date.now() + '-edubin.' + extension); // Nom complet du fichier
+        cb(null, name + '-' + Date.now() + '.' + extension); // Corrected filename format
     }
 });
 
@@ -209,13 +212,11 @@ app.post("/api/cours", async (req, res) => {
 });
 
 // Route pour obtenir tous les cours
-app.get("/api/cours", async (req, res) => {
-    try {
-        const courses = await Cour.find();
-        res.json({ courses });
-    } catch (err) {
-        res.status(500).json({ message: "Error fetching courses", error: err });
-    }
+app.get("/api/cours", (req, res) => {
+    Cour.find().then((cours) => {
+        console.log("Here tous les cours", cours);
+        res.json({ message: cours });
+    });
 });
 // Route pour ajouter une note
 app.post("/api/notes", async (req, res) => {

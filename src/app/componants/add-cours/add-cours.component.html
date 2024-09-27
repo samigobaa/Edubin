@@ -67,16 +67,7 @@
                                     </div> <!-- singel form -->
                                 </div>
                                 
-                                <div *ngIf="userTable?.length > 0" class="col-md-6 mt-5 nav-item">
-                                    <select class="ml-5 sub-menu" aria-label="Large select example">
-                                        <option selected>Select Teachers</option>
-                                        <ng-container *ngFor="let user of userTable">
-                                            <option *ngIf="user.role?.toLowerCase() === 'teacher'">
-                                                {{ user.firstName + ' ' + user.lastName }}
-                                            </option>
-                                        </ng-container>
-                                    </select>
-                                </div>
+                                
                                 <p *ngIf="userTable?.length === 0">No teachers available</p>
                                 
                                 <p class="form-message"></p>

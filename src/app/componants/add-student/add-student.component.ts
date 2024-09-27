@@ -52,6 +52,7 @@ displayMessage :any =''
         title: "student add successfully"
       });
     });
+    this.router.navigate([''])
   }
 
 }

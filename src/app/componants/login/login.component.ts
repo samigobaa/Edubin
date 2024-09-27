@@ -33,10 +33,10 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['admin-panel']);
         }
         else if (decoded.role == 'student') {
-          this.router.navigate(['student-panel']);
+          this.router.navigate(['student-profil']);
         }
         else if (decoded.role == 'teacher') {
-          this.router.navigate(['teachers-panel:id']);
+          this.router.navigate(['teachers-panel']);
         }
         else if (decoded.role == 'parent') {
           this.router.navigate(['parent']);

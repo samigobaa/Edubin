@@ -100,5 +100,6 @@ export class SignupComponent implements OnInit {
         title: "Done !"
       });
     });
+    this.router.navigate([''])
   }
 }

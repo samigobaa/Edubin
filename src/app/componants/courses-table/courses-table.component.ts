@@ -24,12 +24,12 @@ export class CoursesTableComponent implements OnInit {
 this.router.navigate(['add-courses'])
   }
   
-  deleteCours() {
+  deleteCours(id:any) {
    
-    // this.courService.deleteCours(id).subscribe((result) => {
-    //   console.log("here response after delete",result.message);
+    this.courService.deleteCours(id).subscribe((result) => {
+      console.log("here response after delete",result.message);
      
-    // });
+    });
   
       Swal.fire({
         title: "Are you sure?",
@@ -48,5 +48,7 @@ this.router.navigate(['add-courses'])
           });
         }
       });
+      this.router.navigate([''])
     }
+    
 }

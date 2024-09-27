@@ -50,6 +50,7 @@ displayMessage :any =''
         title: "teacher add successfully"
       });
     });
+    this.router.navigate([''])
   
   }
 }

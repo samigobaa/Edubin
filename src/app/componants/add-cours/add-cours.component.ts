@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CoursService } from 'src/app/services/cours.service';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
@@ -17,7 +18,8 @@ export class AddCoursComponent implements OnInit {
   constructor(
     private formBuilder:FormBuilder, 
     private courService:CoursService,
- private userServices:UsersService 
+ private userServices:UsersService,
+ private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -55,6 +57,7 @@ this.courService.addCours(cour).subscribe((response) => {
     title: "Course add successfully"
   });
 });
+this.router.navigate([''])
 }
 
 }

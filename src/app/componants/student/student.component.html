@@ -1,38 +1,50 @@
-<section id="page-banner" class="pt-105 pb-110 bg_cover" data-overlay="8" style="background-image: url(assets/images/page-banner-2.jpg)">
+<section id="page-banner" class="pt-105 pb-110 bg_cover mb-5" data-overlay="8" style="background-image: url(assets/images/page-banner-2.jpg)">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="page-banner-cont">
-                    <h2>Student notes</h2>
+                    <h2>Student Notes</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Student note</li>
+                            <li class="breadcrumb-item active" aria-current="page">Student Notes</li>
                         </ol>
                     </nav>
-                </div>  <!-- page banner cont -->
+                </div>
             </div>
-        </div> <!-- row -->
-    </div> <!-- container -->
-</section>
-<div *ngIf="notesTable && notesTable.length > 0">
-    
-        <div *ngFor="let note of notesTable">
-          <ng-container *ngIf="studentTable">
-            <div *ngFor="let student of studentTable">
-              <ng-container *ngIf="student._id === note.studentId">
-                {{ student.firstName+' '+student.lastName+' obtient le notes: '+note.studentNote}}
-               
-              </ng-container>
-            </div>
-            
-          </ng-container>
-          
-          
         </div>
+    </div>
+</section>
+<div class="animated-message">
+    Please insert the Name and Last Name of your Child
+</div>
+<form [formGroup]="searchForm" (ngSubmit)="search()" class="mt-5">
+    <div class="form-group">
+        <input type="text" formControlName="firstName" class="form-control" placeholder="First Name" />
+    </div><br>
+    <div class="form-group">
+        <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name" />
+    </div>
+    
+    <div *ngIf="searchForm.invalid && (searchForm.touched || searchForm.dirty)">
+        <div *ngIf="searchForm.controls['firstName'].errors?.['required']" class="red">
+            First name is required
+        </div><br>
+        <div *ngIf="searchForm.controls['lastName'].errors?.['required']" class="red">
+            Last name is required
+        </div>
+    </div>
 
-  </div>
-  <div *ngIf="notesTable.length === 0">
-    <p>Aucune note disponible pour l'instant.</p>
-  </div>
-  
+    <div class="form-group text-center">
+        <input 
+            type="submit" 
+            class="btn btn-primary py-3 px-5 mt-5 mb-5" 
+            value="Search" 
+            [disabled]="searchForm.invalid" 
+        />
+    </div>
+    
+    
+
+    
+</form>

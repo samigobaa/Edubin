@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['teachers-panel']);
         }
         else if (decoded.role == 'parent') {
-          this.router.navigate(['parent']);
+          this.router.navigate(['']);
         }
 
       } else {

@@ -1,0 +1,24 @@
+.animated-message {
+    font-size: 2rem; /* Increase font size */
+    text-align: center; /* Center text */
+    margin: 20px 0; /* Add some vertical spacing */
+    animation: fadeInColor 2s ease-in-out forwards; /* Add color animation */
+}
+
+/* Animation keyframes */
+@keyframes fadeInColor {
+    0% {
+        opacity: 0; /* Start transparent */
+        color: red; /* Start with red color */
+        transform: translateY(-20px); /* Move up slightly */
+    }
+    50% {
+        color: orange; /* Change to orange at halfway */
+    }
+    100% {
+        opacity: 1; /* Fully visible */
+        color: green; /* End with green color */
+        transform: translateY(0); /* Move back to original position */
+    }
+}
+

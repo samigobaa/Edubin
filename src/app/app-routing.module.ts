@@ -47,7 +47,8 @@ const routes: Routes = [
   {path:'admin-profil',component:AdmiProfileComponent},
   {path:'parent-profil',component:ParentProfileComponent},
   {path:'student-profil',component:StudentProfileComponent},
-  {path:'student-Note',component:StudentNoteComponent}
+  {path:'student-Note',component:StudentNoteComponent},
+  {path:'display-Student-Notes', component:StudentComponent}
  
 
 

@@ -106,7 +106,15 @@
                                     <ul class="sub-menu">
                                         <li><a class="dropdown-item" routerLink="add-courses">Add Courses</a></li>
                                         <li><a class="dropdown-item" routerLink="teachers-panel">Panel</a></li>
-                                        <li><a class="dropdown-item" routerLink="student-note">Notes</a></li>
+                                        <li><a class="dropdown-item" routerLink="student-Note">Notes</a></li>
+                                    </ul>
+                                </li>
+                                
+                                <li *ngIf="isLoggedIn() && user.role=='parent'" class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown">Dashboard Parent</a>
+                                    <ul class="sub-menu">
+                                        
+                                        <li><a class="dropdown-item" routerLink="display-Student-Notes">MY Student's Note</a></li>
                                     </ul>
                                 </li>
                                 <!-- Other Links -->

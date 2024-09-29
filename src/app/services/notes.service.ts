@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class NotesService {
   }
 
   // Obtenir les notes d'un étudiant
-  getNotesForStudent(studentId: string) {
-    return this.http.get<{ notes: any[] }>(`${this.URL}/${studentId}`);
+  getNotesForStudent(): Observable<{ message: string, data: any[] }> {
+    return this.http.get<{ message: string, data: any[] }>(this.URL);
   }
 }

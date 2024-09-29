@@ -240,14 +240,16 @@ app.post("/api/notes", async (req, res) => {
 });
 
 
-// Route pour obtenir les notes d'un étudiant
-app.get("/api/notes/:studentId", async (req, res) => {
-    try {
-        // Récupère les notes pour un étudiant spécifique
-        const notes = await Note.find({ studentId: req.params.studentId }).populate('teacherId courseId');
-        res.json({ notes });
-    } catch (err) {
-        res.status(500).json({ message: "Error fetching notes", error: err });
-    }
+app.get("/api/notes", (req, res) => {
+  Note.find()
+    .then((notes) => {
+      console.log("Voici toutes les notes :", notes);
+      res.status(200).json({ message: "Notes récupérées avec succès", data: notes });
+    })
+    .catch((error) => {
+      console.error("Erreur lors de la récupération des notes :", error);
+      res.status(500).json({ message: "Erreur lors de la récupération des notes", error });
+    });
 });
+
 module.exports = app;

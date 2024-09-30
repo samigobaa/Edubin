@@ -54,7 +54,7 @@ export class StudentComponent implements OnInit {
   search() {
     const firstName = this.searchForm.value.firstName.trim().toLowerCase();
     const lastName = this.searchForm.value.lastName.trim().toLowerCase();
-
+// La méthode trim() en JavaScript permet de supprimer les espaces blancs au début et à la fin d'une chaîne de caractères.
     this.user = this.studentTable.find(
       (stu: any) =>
         stu.firstName.toLowerCase() === firstName &&

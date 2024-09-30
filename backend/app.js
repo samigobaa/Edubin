@@ -239,7 +239,7 @@ app.post("/api/notes", async (req, res) => {
     }
 });
 
-
+// Route pour recuperer tous les notes
 app.get("/api/notes", (req, res) => {
   Note.find()
     .then((notes) => {

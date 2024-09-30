@@ -3,15 +3,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="">
-                    <!-- shop bar -->
+                    
                     <div class="shop-select">
                         <div class="row mr-3">
                             <button class="btn btn-warning" (click)="goToAddCour()">Add Courses</button>
                         </div>
-                    </div> <!-- shop select -->
-                </div> <!-- shop top search -->
+                    </div> 
+                </div>
             </div>
-        </div> <!-- row -->
+        </div> 
         <div class="tab-content" id="myTabContent">
             <div class=" fade show active" id="shop-grid">
                 <div class="row justify-content-center">
@@ -21,23 +21,23 @@
                             <div class="text-center" *ngFor="let cour of courTable">
                                 <div class="mb-5">
                                     <h1>Cour Name : {{cour.courName}}</h1>
-                                    <span> Number of Hours : {{cour.courNbrHours}}</span><br>
-                                    <span>Discription : {{cour.courDiscription}}</span>
+                                    <h2> Number of Hours : {{cour.courNbrHours}}</h2><br>
+                                    <h2>Discription : {{cour.courDiscription}}</h2>
                                 </div>
                                 <div class="row ml-5 mb-5" >
-                                    <div class="row mr-3" ><button class="btn btn-success">Dissplay</button></div>
+                                    
 
                                     <div class="row" ><button class="btn btn-danger" (click)="deleteCours(cour._id)">Delete</button></div>
                                 </div>
 
                             </div>
-                        </div> <!-- singel publication -->
+                        </div> 
                     </div>
 
-                </div> <!-- row -->
+                </div>
             </div>
 
-        </div> <!-- tab content -->
-         <!-- row -->
-    </div> <!-- container -->
+        </div>
+         
+    </div> 
 </section>
